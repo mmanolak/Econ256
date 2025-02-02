@@ -1,6 +1,6 @@
 # Econ 256 Coursework 
 \
-This repository contains coursework and exercises for Econ 256. \
+This repository contains coursework and exercises for Econ 256. 
 
 ## Contents 
 - **exercise1**: Introduction to data visualization with R.
