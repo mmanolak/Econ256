@@ -10,7 +10,9 @@ if (Sys.info()['sysname'] == "Windows") {
   setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise2")
 } else if (Sys.info()['sysname'] == "Linux") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise2")
-}
+} else if (Sys.info()['sysname'] == "Darwin") {
+  setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise2")}
+#Last line above is for macOS
 
 #install.packages('tidyverse')
 library(tidyverse)
