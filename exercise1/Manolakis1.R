@@ -5,7 +5,7 @@ library(tidyverse)
 
 #windowsOS checker for dependent directory
 if (Sys.info()['sysname'] == "Windows") {
-    setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise1")
+    setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise1")
 #LinuxOS Checker
 } else if (Sys.info()['sysname'] == "Linux") {
     setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise1")
