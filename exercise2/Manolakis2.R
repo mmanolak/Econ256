@@ -2,14 +2,11 @@
 #Michael Manolakis - Econ 256 Data Vis - CRN 86179
 #24 Jan 2025
 
-#set working directory and load library
-setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise2")
-
 #set working directory; checker for dependent directory
 if (Sys.info()['sysname'] == "Windows") {
   setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise2")
 } else if (Sys.info()['sysname'] == "Linux") {
-  setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise2")
+  setwd("~/Desktop/R Files/Econ256/exercise2")
 } else if (Sys.info()['sysname'] == "Darwin") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise2")}
 #Last line above is for macOS
@@ -17,7 +14,7 @@ if (Sys.info()['sysname'] == "Windows") {
 #install.packages('tidyverse')
 library(tidyverse)
 
-mydata<-read.csv("states.csv")
+mydata<-read_csv("states.csv")
 
 #Plot the relationship between median home value and median rent
 ggplot(mydata,aes(x=median_home_value,y=median_rent))+
@@ -72,3 +69,4 @@ ggplot(mydata3,aes(x=popm,y=housm,color=hawaii))+
 #close relationship?
 #Yes, there is a strong positive relationship between a state’s population and 
 #the number of housing units.
+

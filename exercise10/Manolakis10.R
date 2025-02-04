@@ -8,7 +8,7 @@ library(tidyverse)
 if (Sys.info()['sysname'] == "Windows") {
   setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise10")
 } else if (Sys.info()['sysname'] == "Linux") {
-  setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise10")
+  setwd("~/Desktop/R Files/Econ256/exercise10")
 } else if (Sys.info()['sysname'] == "Darwin") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise10")}
 #Last line above is for macOS

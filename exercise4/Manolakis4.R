@@ -2,14 +2,28 @@
 #Michael Manolakis - Econ 256 Data Vis - CRN 86179
 #27 Jan 2025
 
-#Load necessary library
-library(tidyverse)
 #set working directory; checker for dependent directory
 if (Sys.info()['sysname'] == "Windows") {
-  setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise4")
+  setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise2")
 } else if (Sys.info()['sysname'] == "Linux") {
-  setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise4")
+  setwd("~/Desktop/R Files/Econ256/exercise4")
 } else if (Sys.info()['sysname'] == "Darwin") {
-  setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise1")}
+  setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise4")}
 #Last line above is for macOS
+
+library(tidyverse)
+options(scipen=9999)
+
+mydata<-read_csv("R13805626_SL060.csv")
+mydata2<-select(mydata,Geo_FIPS,Geo_QName,SE_A00001_001)
+mydata3<-mydata2%>%
+  filter(Geo_FIPS!=72)%>%
+  filter(Geo_FIPS!=11)
+
+ggplot(data=mydata3,mapping=aes(x=SE_A00001_001))+
+  geom_histogram()
+  
+
+
+
 

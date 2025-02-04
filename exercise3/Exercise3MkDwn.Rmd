@@ -1,0 +1,68 @@
+---
+title: "Exercise 3 for Markdown"
+author: "Michael Manolakis"
+date: "27 Jan 2025"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+# Load necessary libraries
+library(tidyverse)
+library(ggplot2)
+
+#set working directory; checker for dependent directory
+if (Sys.info()['sysname'] == "Windows") {
+  setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise3")
+} else if (Sys.info()['sysname'] == "Linux") {
+  setwd("~/Desktop/R Files/Data Vis/exercise3")
+} else if (Sys.info()['sysname'] == "Darwin") {
+  setwd("~/Desktop/Spring 2025/3 - Econ 256/R Studio Files/exercise1")}
+#Last line above is for macOS
+# Load the dataset
+mydata <- read_csv("acs_HI_2022.csv")
+
+# Subgroups
+grads <- mydata %>% filter(COLLEGE == 1)      # College graduates
+young <- mydata %>% filter(AGE < 30)         # People under 30
+younggrads <- mydata %>% filter(COLLEGE == 1 & AGE < 30)  # College graduates under 30
+nongrads <- mydata %>% filter(COLLEGE == 0)  # Non-college graduates
+```
+
+```{r plot1, echo=FALSE, message=FALSE, warning=FALSE}
+# Histogram of Income Distribution
+ggplot(mydata, aes(x = INCOME)) +
+  geom_histogram(color = "black", binwidth = 15000, fill = "steelblue") +
+  ggtitle("Income Distribution of Hawaii Residents") +
+  xlab("Income") +
+  ylab("Number of Survey Respondents")
+```
+
+```{r plot2, echo=FALSE, message=FALSE, warning=FALSE}
+# Overall Income vs Age
+ggplot(mydata, aes(x = AGE, y = INCOME)) +
+  geom_smooth(color = "black", fill = "darkgrey", method = "lm") +
+  theme_minimal() +
+  ggtitle("Income vs. Age in Hawaii") +
+  xlab("Age") +
+  ylab("Income")
+```
+
+```{r plot3, echo=FALSE, message=FALSE, warning=FALSE}
+# Income by Age for College Graduates
+ggplot(grads, aes(x = AGE, y = INCOME)) +
+  geom_smooth(color = "black", fill = "darkgrey", method = "lm") +
+  theme_minimal() +
+  ggtitle("Income vs. Age for College Graduates") +
+  xlab("Age") +
+  ylab("Income")
+```
+
+```{r plot4, echo=FALSE, message=FALSE, warning=FALSE}
+# Income by Age for Non-College Graduates
+ggplot(nongrads, aes(x = AGE, y = INCOME)) +
+  geom_smooth(color = "black", fill = "darkgrey", method = "lm") +
+  theme_minimal() +
+  ggtitle("Income vs. Age for Non-College Graduates") +
+  xlab("Age") +
+  ylab("Income")
+```
