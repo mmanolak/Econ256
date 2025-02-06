@@ -9,7 +9,7 @@ if (Sys.info()['sysname'] == "Windows") {
   else if (Sys.info()['nodename'] == "Michael" || Sys.getenv('USERNAME') == "Michael") { 
     setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise2")}
 } else if (Sys.info()['sysname'] == "Linux") {
-  setwd("~/Desktop/R Files/Econ256")
+  setwd("~/Desktop/R Files/Econ256/exercise2")
 } else if (Sys.info()['sysname'] == "Darwin") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256")}
 #Last line above is for macOS
