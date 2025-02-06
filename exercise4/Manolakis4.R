@@ -43,9 +43,9 @@ mydata3<- mydata3%>%
   mutate(AtLeastBach.Per=Bach.Per+Mas.Per+Pro.Per+PhD.Per)
 
 #scatter plot for median income vs bachelor's
-ggplot(mydata3, aes(x = `Median Income`, y = AtLeastBach.Per)) +
-  geom_point(color = "Navy")+
-  labs(title = "Puetro Rico - Income vs Bachelor's (2023)",
+ggplot(mydata3, aes(x=`Median Income`, y=AtLeastBach.Per)) +
+  geom_point(color="Navy")+
+  labs(title = "Puetro Rico-Income vs Bachelor's (2023)",
        x = "Median Household Income",
        y = "At Least a Bachelor's Degree")+
   theme_minimal()+
@@ -102,7 +102,3 @@ print(education_summary)
 #What county in your state has the highest share of people with at least a 
 #bachelor’s degree?
 # The county with the most Bachelor’s degree holders (not percent) is San Juan.
-
-cat("\nHighest Bachelor's Degree Share:", round(max_bach_share * 100, 2),"%\n",
-    "\nLowest Bachelor's Degree Share:", round(min_bach_share * 100, 2),"%\n")
-
