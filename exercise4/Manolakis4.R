@@ -1,6 +1,6 @@
 #Exercise 4
 #Michael Manolakis - Econ 256 Data Vis - CRN 86179
-#27 Jan 2025
+#12 February 2025
 
 #set working directory; checker for dependent directory
 if (Sys.info()['sysname'] == "Windows") {
@@ -31,6 +31,12 @@ mydata3<-rename(mydata2, "Population"=SE_A00001_001,
                 "Masters Grad"=SE_A12002_006,
                 "Professional Degree"=SE_A12002_007,
                 "PhD"=SE_A12002_008)
+
+#line to remove municipio from the names of the counties/areas in Puerto Rico
+mydata3<-mydata3%>%
+  mutate(Geo_NAME=str_replace(Geo_NAME, regex(" municipio", 
+                                              ignore_case = TRUE), ""))
+
 mydata3<-mydata3%>%
   mutate(Bach.Per=`Bachelor Grad`/`Population Over 25`,
          Mas.Per=`Masters Grad`/`Population Over 25`,
