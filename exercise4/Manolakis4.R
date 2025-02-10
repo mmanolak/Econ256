@@ -35,7 +35,7 @@ mydata3<-rename(mydata2, "Population"=SE_A00001_001,
 #line to remove municipio from the names of the counties/areas in Puerto Rico
 mydata3<-mydata3%>%
   mutate(Geo_NAME=str_replace(Geo_NAME, regex(" municipio", 
-                                              ignore_case = TRUE), ""))
+                                              ignore_case=TRUE), ""))
 
 mydata3<-mydata3%>%
   mutate(Bach.Per=`Bachelor Grad`/`Population Over 25`,

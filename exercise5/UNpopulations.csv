@@ -1,0 +1,232 @@
+country,population_mils
+China,1433.783686
+India,1366.417754
+United States of America,329.064917
+Indonesia,270.625568
+Pakistan,216.565318
+Brazil,211.049527
+Nigeria,200.963599
+Bangladesh,163.046161
+Russia,145.872256
+Mexico,127.575529
+Japan,126.860301
+Ethiopia,112.07873
+Philippines,108.116615
+Egypt,100.388073
+Vietnam,96.462106
+DR Congo,86.790567
+Germany,83.517045
+Turkey,83.429615
+Iran,82.913906
+Thailand,69.037513
+Great Britain,67.530172
+France,65.129728
+Italy,60.550075
+South Africa,58.55827
+Tanzania,58.005463
+Myanmar,54.04542
+Kenya,52.573973
+South Korea,51.225308
+Colombia,50.339443
+Spain,46.736776
+Argentina,44.780677
+Uganda,44.269594
+Ukraine,43.993638
+Algeria,43.053054
+Sudan,42.813238
+Iraq,39.309783
+Afghanistan,38.041754
+Poland,37.887768
+Canada,37.411047
+Morocco,36.471769
+Saudi Arabia,34.268528
+Uzbekistan,32.981716
+Peru,32.510453
+Malaysia,31.949777
+Angola,31.825295
+Mozambique,30.366036
+Yemen,29.161922
+Ghana,28.833629
+Nepal,28.60871
+Venezuela,28.515829
+Madagascar,26.969307
+North Korea,25.666161
+Ivory Coast,25.716544
+Cameroon,25.87638
+Australia,25.203198
+Taiwan,23.773876
+Niger,23.310715
+Sri Lanka,21.323733
+Burkina Faso,20.321378
+Mali,19.658031
+Romania,19.364557
+Malawi,18.628747
+Chile,18.952038
+Kazakstan,18.551427
+Zambia,17.86103
+Guatemala,17.581472
+Ecuador,17.373662
+Netherlands,17.09713
+Syria,17.070135
+Cambodia,16.486542
+Senegal,16.296364
+Chad,15.946876
+Somalia,15.442905
+Zimbabwe,14.645468
+Guinea,12.771246
+Rwanda,12.62695
+Benin,11.801151
+Tunisia,11.694719
+Belgium,11.539328
+Bolivia,11.5131
+Cuba,11.333483
+Haiti,11.26377
+South Sudan,11.062113
+Burundi,10.864245
+Dominican Republic,10.738958
+Czech Republic,10.689209
+Greece,10.473455
+Portugal,10.226187
+Jordan,10.101694
+Azerbaijan,10.047718
+Sweden,10.036379
+United Arab Emirates,9.770529
+Honduras,9.746117
+Hungary,9.684679
+Belarus,9.452411
+Tajikistan,9.321018
+Austria,8.955102
+Papua New Guinea,8.776109
+Serbia,8.772235
+Switzerland,8.591365
+Israel,8.519377
+Togo,8.082366
+Sierra Leone,7.813215
+Hong Kong,7.436154
+Laos,7.169455
+Paraguay,7.044636
+Bulgaria,7.000119
+Lebanon,6.855713
+Libya,6.777452
+Nicaragua,6.545502
+El Salvador,6.453553
+Kyrgyzstan,6.41585
+Turkmenistan,5.942089
+Singapore,5.804337
+Denmark,5.771876
+Finland,5.532156
+Slovakia,5.457013
+Congo,5.380508
+Norway,5.378857
+Costa Rica,5.047561
+Palestine,4.98142
+Oman,4.974986
+Liberia,4.937374
+Ireland,4.882495
+New Zealand,4.783063
+Central African Republic,4.745185
+Mauritania,4.525696
+Panama,4.246439
+Kuwait,4.207083
+Croatia,4.130304
+Moldova,4.043263
+Georgia,3.996765
+Eritrea,3.497117
+Uruguay,3.461734
+Bosnia and Herzegovina,3.301
+Mongolia,3.225167
+Armenia,2.957731
+Jamaica,2.948279
+Puerto Rico,2.933408
+Albania,2.880917
+Qatar,2.832067
+Lithuania,2.759627
+Namibia,2.49453
+Gambia,2.347706
+Botswana,2.303697
+Gabon,2.172579
+Lesotho,2.125268
+North Macedonia,2.083459
+Slovenia,2.078654
+Guinea-Bissau,1.920922
+Latvia,1.906743
+Bahrain,1.641172
+Trinidad and Tobago,1.394973
+Equatorial Guinea,1.355986
+Estonia,1.325648
+East Timor,1.293119
+Mauritius[p],1.198575
+Cyprus[q],1.179551
+Eswatini,1.14813
+Djibouti,0.97356
+Fiji,0.889953
+Réunion,0.888927
+Comoros,0.850886
+Guyana,0.782766
+Bhutan,0.763092
+Solomon Islands,0.669823
+Macau,0.640445
+Montenegro,0.627987
+Luxembourg,0.615729
+Western Sahara,0.582463
+Suriname,0.581372
+Cape Verde,0.549935
+Maldives,0.530953
+Guadeloupe,0.447905
+Malta,0.440372
+Brunei,0.433285
+Belize,0.390353
+Bahamas,0.389482
+Martinique,0.375554
+Iceland,0.339031
+Vanuatu,0.299882
+Barbados,0.287025
+New Caledonia,0.28275
+French Guiana,0.282731
+French Polynesia,0.279287
+Mayotte,0.26615
+São Tomé and Príncipe,0.215056
+Samoa,0.197097
+Saint Lucia,0.18279
+Guernsey and  Jersey,0.172259
+Guam,0.167294
+Curaçao,0.163424
+Kiribati,0.117606
+F.S. Micronesia,0.113815
+Tonga,0.11094
+Saint Vincent and the Grenadines,0.110589
+Aruba,0.106314
+U.S. Virgin Islands,0.104578
+Seychelles,0.097739
+Antigua and Barbuda,0.097118
+Isle of Man,0.084584
+Andorra,0.077142
+Dominica,0.071808
+Cayman Islands,0.064948
+Bermuda,0.062506
+Marshall Islands,0.058791
+Greenland,0.056672
+Northern Mariana Islands,0.056188
+American Samoa,0.055312
+Saint Kitts and Nevis,0.052823
+Faroe Islands,0.048678
+Sint Maarten,0.042388
+Monaco,0.038964
+Turks and Caicos Islands,0.038191
+Liechtenstein,0.038019
+Gibraltar,0.033701
+British Virgin Islands,0.03003
+Caribbean Netherlands,0.025979
+Palau,0.018008
+Cook Islands,0.017548
+Anguilla,0.014869
+Tuvalu,0.011646
+Wallis and Futuna,0.011432
+Nauru,0.010756
+"Saint Helena, Ascension and Tristan da Cunha",0.006059
+Saint Pierre and Miquelon,0.005822
+Montserrat,0.004989
+Falkland Islands,0.003377
+Niue,0.001615
+Tokelau,0.00134
+Vatican City,0.000799
