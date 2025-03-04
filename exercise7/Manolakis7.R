@@ -1,9 +1,10 @@
 #Exercise 7
 #Michael Manolakis - Econ 256 Data Vis - CRN 86179
-#27 Jan 2025
+#3 March 2025
 
 #Load necessary library
 library(tidyverse)
+library(sf)
 #set working directory; checker for dependent directory
 if (Sys.info()['sysname'] == "Windows") {
   if (Sys.info()['nodename'] == "DegreeLaptop" || Sys.getenv('USERNAME') == "Degree Laptop") { 
@@ -16,4 +17,41 @@ if (Sys.info()['sysname'] == "Windows") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256")}
 #Last line above is for macOS
 
-print(getwd())
+#Load Data
+results<-read_csv("election2020.csv")
+counties<-read_sf(dsn="Counties", layer="Counties")
+
+#Removing double counting
+results<-results %>%
+  mutate(winner=ifelse(Biden > Trump, "Biden", "Trump"))
+
+#Remove Alaska and Hawaii
+results<-results %>%
+  filter(state!="ALASKA" & state!="HAWAII")
+
+#Ensure counties data also excludes Alaska & Hawaii, remove redundant zero
+counties<-counties %>%
+  filter(STATE_NAME!="Alaska" & STATE_NAME!="Hawaii") %>%
+  mutate(FIPS = str_remove(FIPS,"^0"))
+
+#Convert FIPS in results to character for matching
+results<-results %>%
+  rename(FIPS=county_fips) %>%
+  mutate(FIPS=as.character(FIPS))
+
+#Ensure both datasets have FIPS in the same format
+counties<-counties %>%
+  mutate(FIPS=as.character(as.numeric(FIPS)))
+
+results <- results %>%
+  mutate(FIPS=as.character(as.numeric(FIPS)))
+
+#Perform the join (keeping counties first to retain spatial features)
+merged<-left_join(counties, results, by="FIPS")
+
+#Plot the map
+ggplot(data = merged, aes(fill=winner)) +
+  geom_sf() +
+  theme_void() +
+  scale_fill_manual(values=c("#083A90", "#E81B23")) +
+  labs(fill="Winning Candidate")
