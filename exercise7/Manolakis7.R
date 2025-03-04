@@ -55,3 +55,6 @@ ggplot(data = merged, aes(fill=winner)) +
   theme_void() +
   scale_fill_manual(values=c("#083A90", "#E81B23")) +
   labs(fill="Winning Candidate")
+
+#saving the map as a png
+ggsave("Manolakis-map.png",height=7,width=10,bg="white")
