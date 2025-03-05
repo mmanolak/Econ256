@@ -32,19 +32,16 @@ results<-results %>%
 #Ensure counties data also excludes Alaska & Hawaii, remove redundant zero
 counties<-counties %>%
   filter(STATE_NAME!="Alaska" & STATE_NAME!="Hawaii") %>%
-  mutate(FIPS = str_remove(FIPS,"^0"))
+  mutate(FIPS = str_remove(FIPS,"^0"))%>%
+  mutate(FIPS=as.character(as.numeric(FIPS)))
 
 #Convert FIPS in results to character for matching
 results<-results %>%
   rename(FIPS=county_fips) %>%
-  mutate(FIPS=as.character(FIPS))
-
+  mutate(FIPS=as.character(FIPS))%>%
+  mutate(FIPS=as.character(as.numeric(FIPS)))
 #Ensure both datasets have FIPS in the same format
-counties<-counties %>%
-  mutate(FIPS=as.character(as.numeric(FIPS)))
 
-results <- results %>%
-  mutate(FIPS=as.character(as.numeric(FIPS)))
 
 #Perform the join (keeping counties first to retain spatial features)
 merged<-left_join(counties, results, by="FIPS")
