@@ -18,7 +18,7 @@ if (Sys.info()['sysname'] == "Windows") {
 
 airbnb_data <- read_csv("oahulistings.csv")
 
-# Run summary calculations
+#Running summary calculations
 summary_stats <- tibble(
   total_listings_2016 = nrow(airbnb_data %>% filter(year == 2016)),
   total_listings_2018 = nrow(airbnb_data %>% filter(year == 2018)),
@@ -59,10 +59,10 @@ summary_stats <- tibble(
     pull(unique_zipcodes)
 )
 
-# Print summary
-print(summary_stats)
+#Print summary for testing purposes
+#print(summary_stats)
 
-# Display results in a readable format
+#Display results in a readable format
 cat("\nAirbnb Statistics for Oahu:\n",
     "In 2016, there were", summary_stats$total_listings_2016, 
     "Airbnb listings. By 2018, that number grew to", summary_stats$total_listings_2018, ".\n",

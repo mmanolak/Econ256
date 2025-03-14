@@ -1,6 +1,6 @@
 #Exercise 10
 #Michael Manolakis - Econ 256 Data Vis - CRN 86179
-#27 Jan 2025
+#14 March 2025
 
 #Load necessary library
 library(tidyverse)
@@ -18,5 +18,13 @@ if (Sys.info()['sysname'] == "Windows") {
 
 cookoff<-read_csv('cookoff.csv')
 
-summary(lm(formula=redpeppers~blackpeppers, data=cookoff))
+#Run regression with 'spicy' as the dependent variable
+model<-lm(spice~redpeppers+blackpeppers, data=cookoff)
 
+#I expect Red Peppers to have a value of 5 and Black Peppers to have 1
+#The P values for both the Black and Red peppers are extremely small,
+#statistically significant at the 0.001 level (p < 0.001).
+
+
+#Display regression summary
+summary(model)
