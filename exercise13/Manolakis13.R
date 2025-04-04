@@ -4,6 +4,8 @@
 
 #Load necessary library
 library(tidyverse)
+library(sf)
+library(leaflet)
 
 if (Sys.info()['sysname'] == "Windows") {
   if (Sys.info()['nodename'] == "DegreeLaptop" || Sys.getenv('USERNAME') == "Degree Laptop") { 
@@ -15,3 +17,22 @@ if (Sys.info()['sysname'] == "Windows") {
 } else if (Sys.info()['sysname'] == "Darwin") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256")}
 #Last line above is for macOS
+
+l2018<-read_csv('listings_2018.csv')
+oahu<-read_sf(dsn='oahu', layer='oahu')
+
+#Plot 2018 Air BnB Listings
+ggplot()+
+  geom_sf(data=oahu, fill="lightgray", color="black")+
+  geom_point(data=l2018, aes(x=longitude, y=latitude), color="#ed6464", size=1.5, alpha=0.5)+
+  theme_void()+
+  ggtitle("Air BnB Listings in Oahu (2018)") +
+  labs(caption="Data sources: US Census Bureau and Inside Airbnb")
+
+l2018sf<-st_as_sf(x = l2018, coords = c("longitude", "latitude"))
+
+leaflet(l2018sf) %>%
+  addProviderTiles("Esri.WorldGrayCanvas") %>%
+  addCircles()
+
+
