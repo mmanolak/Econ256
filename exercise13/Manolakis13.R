@@ -29,10 +29,10 @@ ggplot()+
   ggtitle("Air BnB Listings in Oahu (2018)") +
   labs(caption="Data sources: US Census Bureau and Inside Airbnb")
 
-l2018sf<-st_as_sf(x = l2018, coords = c("longitude", "latitude"))
+#Convert to sf object with CRS
+l2018sf<-st_as_sf(x=l2018, coords=c("longitude", "latitude"), crs=4326)
 
+#Interactive map with tooltips
 leaflet(l2018sf) %>%
   addProviderTiles("Esri.WorldGrayCanvas") %>%
-  addCircles()
-
-
+  addCircles(popup = ~name)
