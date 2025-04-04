@@ -4,6 +4,7 @@
 
 #Load necessary library
 library(tidyverse)
+library(plotly)
 
 if (Sys.info()['sysname'] == "Windows") {
   if (Sys.info()['nodename'] == "DegreeLaptop" || Sys.getenv('USERNAME') == "Degree Laptop") { 
@@ -15,3 +16,12 @@ if (Sys.info()['sysname'] == "Windows") {
 } else if (Sys.info()['sysname'] == "Darwin") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256")}
 #Last line above is for macOS
+
+read_csv("vaccinations.csv") %>%
+  plot_ly(x = ~date, y = ~sharefullyvac, split = ~geog,
+        type = "scatter", mode = "lines") %>%
+  layout(title = "Share of Population Fully Vaccinated Over Time",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Percent Fully Vaccinated"))
+
+
