@@ -9,6 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(sf)
+library(knitr)
 options(scipen=9999)
 
 if (Sys.info()['sysname'] == "Windows") {
@@ -29,11 +30,11 @@ vantracts <- read_sf(dsn="vantracts", layer="vantracts") %>%
       summarize(medprice = median(price, na.rm = TRUE)), by = "tract")
 ```
 
-## Summary Statistics
+```{r compile-summary-list, echo=FALSE}
+model_beds <- lm(price ~ Beds, data = vanhousing)
+model_baths <- lm(price ~ FullBath, data = vanhousing)
+model_full <- lm(price ~ Beds + FullBath + west, data = vanhousing)
 
-The following summary statistics describe key trends in the Vancouver housing market, including central tendency, variation, and structural characteristics.
-
-```{r summary-stats}
 van_summary <- list(
   correlation_matrix = vanhousing %>%
     select(price, Beds, FullBath, `area_sqft`) %>%
@@ -63,65 +64,73 @@ van_summary <- list(
     median_sqft = median(vanhousing$`area_sqft`, na.rm = TRUE)
   ),
 
-  regression_beds = summary(lm(price ~ Beds, data = vanhousing)),
-  regression_baths = summary(lm(price ~ FullBath, data = vanhousing)),
-  regression_full = summary(lm(price ~ Beds + FullBath + west, data = vanhousing))
+  regression_beds = summary(model_beds),
+  regression_baths = summary(model_baths),
+  regression_full = summary(model_full)
 )
+```
 
-van_summary$summary_stats
+## Summary Statistics
+
+The following summary statistics describe key trends in the Vancouver housing market, including central tendency, variation, and structural characteristics.
+
+```{r summary-stats, echo=FALSE}
+kable(van_summary$summary_stats)
 ```
 
 ## Average Price Over Time
 
-```{r mean-over-time}
+```{r mean-over-time, echo=FALSE}
 vanhousing %>%
   group_by(year_of_sale) %>%
   summarise(mean_price = mean(price, na.rm = TRUE)) %>%
   ggplot(aes(x = year_of_sale, y = mean_price)) +
-  geom_line(color = "darkred", size = 1) +
+  geom_line(color = "darkred", linewidth = 1) +
   scale_x_continuous(breaks = seq(2005, 2015, by = 2)) +
   xlab("Year of Sale") +
   ylab("Mean Price") +
   ggtitle("Change in Mean House Price Over Time")
 ```
 
+\newpage
+
 ## Correlation Matrix
 
-```{r correlation-matrix}
-van_summary$correlation_matrix
+```{r correlation-matrix, echo=FALSE}
+kable(van_summary$correlation_matrix)
 ```
 
 ## Median Price by West/East
 
-```{r median-west-east}
-van_summary$median_price_west_east
+```{r median-west-east, echo=FALSE}
+kable(van_summary$median_price_west_east)
 ```
 
 ## Median Price by Number of Bedrooms
 
-```{r median-by-bedrooms}
-van_summary$median_price_by_beds
+```{r median-by-bedrooms, echo=FALSE}
+kable(van_summary$median_price_by_beds)
 ```
 
 ## Top 10 Largest Homes by Square Footage
 
-```{r top-10-homes}
-van_summary$top10_largest_homes
+```{r top-10-homes, echo=FALSE}
+kable(van_summary$top10_largest_homes)
 ```
 
 ## Regression Analysis
 
 ### Price vs. Number of Bedrooms
-```{r regression-beds}
-van_summary$regression_beds
+```{r regression-beds, echo=FALSE}
+kable(as.data.frame(van_summary$regression_beds$coefficients), digits = 3)
 ```
 
 ### Price vs. Number of Bathrooms
-```{r regression-baths}
-van_summary$regression_baths
+```{r regression-baths, echo=FALSE}
+kable(as.data.frame(van_summary$regression_baths$coefficients), digits = 3)
 ```
 
-### Price vs. Number of Bedrooms, Bathrooms, and West/East
-```{r regression-full}
-van_summary$regression_full
+### Price vs. Bedrooms, Bathrooms, and West/East
+```{r regression-full, echo=FALSE}
+kable(as.data.frame(van_summary$regression_full$coefficients), digits = 3)
 ```
