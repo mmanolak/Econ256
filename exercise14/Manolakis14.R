@@ -1,6 +1,6 @@
 #Exercise 14
 #Michael Manolakis - Econ 256 Data Vis - CRN 86179
-#14 March 2025
+#16 April 2025
 
 #Load necessary library
 library(tidyverse)
@@ -52,35 +52,34 @@ vanhousing %>%
   cor(use = "complete.obs") %>%
   round(2) -> cor_matrix
 
-#Median price by west vs east
-vanhousing %>%
-  group_by(west) %>%
-  summarize(medprice = median(price, na.rm = TRUE))
-
-#Median price by number of bedrooms
-vanhousing %>%
-  group_by(Beds) %>%
-  summarise(median_price = median(price, na.rm = TRUE)) %>%
-  arrange(Beds)
-
-#Largest home by number of bedrooms
-vanhousing %>%
-  filter(Beds == max(Beds, na.rm = TRUE)) %>%
-  select(Beds, address, price, `area_sqft`)
-
-#Top 10 largest homes by square footage
-vanhousing %>%
-  arrange(desc(`area_sqft`)) %>%
-  slice_head(n = 10) %>%
-  select(`area_sqft`, addressshort, price, Beds)
-
-#Summary statistics
-tibble(
-  median_price = median(vanhousing$price, na.rm = TRUE),
-  mean_price = mean(vanhousing$price, na.rm = TRUE),
-  sd_price = sd(vanhousing$price, na.rm = TRUE),
-  median_beds = median(vanhousing$Beds, na.rm = TRUE),
-  median_baths = median(vanhousing$FullBath, na.rm = TRUE),
-  median_sqft = median(vanhousing$`area_sqft`, na.rm = TRUE)
+#Compile key results into a list
+van_summary <- list(
+  correlation_matrix = cor_matrix,
+  
+  median_price_west_east = vanhousing %>%
+    group_by(west) %>%
+    summarize(medprice = median(price, na.rm = TRUE)),
+  
+  median_price_by_beds = vanhousing %>%
+    group_by(Beds) %>%
+    summarise(median_price = median(price, na.rm = TRUE)) %>%
+    arrange(Beds),
+  
+  top10_largest_homes = vanhousing %>%
+    arrange(desc(`area_sqft`)) %>%
+    slice_head(n = 10) %>%
+    select(`area_sqft`, addressshort, price, Beds),
+  
+  summary_stats = tibble(
+    median_price = median(vanhousing$price, na.rm = TRUE),
+    mean_price = mean(vanhousing$price, na.rm = TRUE),
+    sd_price = sd(vanhousing$price, na.rm = TRUE),
+    median_beds = median(vanhousing$Beds, na.rm = TRUE),
+    median_baths = median(vanhousing$FullBath, na.rm = TRUE),
+    median_sqft = median(vanhousing$`area_sqft`, na.rm = TRUE)
+  ),
+  
+  regression_beds = summary(lm(price ~ Beds, data = vanhousing)),
+  regression_baths = summary(lm(price ~ FullBath, data = vanhousing)),
+  regression_full = summary(lm(price ~ Beds + FullBath + west, data = vanhousing))
 )
-
