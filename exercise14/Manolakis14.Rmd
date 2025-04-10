@@ -75,47 +75,11 @@ van_summary <- list(
 The following summary statistics describe key trends in the Vancouver housing market, including central tendency, variation, and structural characteristics.
 
 ```{r summary-stats, echo=FALSE}
-kable(van_summary$summary_stats)
-```
-
-## Average Price Over Time
-
-```{r mean-over-time, echo=FALSE}
-vanhousing %>%
-  group_by(year_of_sale) %>%
-  summarise(mean_price = mean(price, na.rm = TRUE)) %>%
-  ggplot(aes(x = year_of_sale, y = mean_price)) +
-  geom_line(color = "darkred", linewidth = 1) +
-  scale_x_continuous(breaks = seq(2005, 2015, by = 2)) +
-  xlab("Year of Sale") +
-  ylab("Mean Price") +
-  ggtitle("Change in Mean House Price Over Time")
-```
-
-\newpage
-
-## Correlation Matrix
-
-```{r correlation-matrix, echo=FALSE}
-kable(van_summary$correlation_matrix)
-```
-
-## Median Price by West/East
-
-```{r median-west-east, echo=FALSE}
-kable(van_summary$median_price_west_east)
-```
-
-## Median Price by Number of Bedrooms
-
-```{r median-by-bedrooms, echo=FALSE}
-kable(van_summary$median_price_by_beds)
-```
-
-## Top 10 Largest Homes by Square Footage
-
-```{r top-10-homes, echo=FALSE}
-kable(van_summary$top10_largest_homes)
+summary_table <- van_summary$summary_stats
+names(summary_table) <- c("Median Price", "Mean Price", "Standard Deviation", "Median Beds", "Median Baths", "Median Sqft")
+summary_table <- summary_table %>%
+  mutate(across(everything(), ~ format(round(.x, 0), big.mark = ",")))
+kable(summary_table)
 ```
 
 ## Regression Analysis
@@ -134,3 +98,88 @@ kable(as.data.frame(van_summary$regression_baths$coefficients), digits = 3)
 ```{r regression-full, echo=FALSE}
 kable(as.data.frame(van_summary$regression_full$coefficients), digits = 3)
 ```
+
+## Price Distributions
+
+```{r histogram, echo=FALSE, fig.width=7, fig.height=4}
+ggplot(data = vanhousing, aes(x = price)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white") +
+  scale_x_continuous(breaks = seq(0, 5000000, by = 1000000),
+                     labels = c("0", "$1 Mil", "$2 Mil", "$3 Mil", "$4 Mil", "$5 Mil")) +
+  ggtitle("Distribution of House Prices in Vancouver") +
+  xlab("Price") +
+  ylab("Count")
+```
+
+## Average Price Over Time
+
+```{r mean-over-time, echo=FALSE, fig.width=7, fig.height=4}
+vanhousing %>%
+  group_by(year_of_sale) %>%
+  summarise(mean_price = mean(price, na.rm = TRUE)) %>%
+  ggplot(aes(x = year_of_sale, y = mean_price)) +
+  geom_line(color = "darkred", linewidth = 1) +
+  scale_x_continuous(breaks = seq(2005, 2015, by = 2)) +
+  scale_y_continuous(breaks = seq(600000, 1200000, by = 200000),
+                     labels = c("$600K", "$800K", "$1 Mil", "$1.2 Mil")) +
+  xlab("Year of Sale") +
+  ylab("Mean Price") +
+  ggtitle("Change in Mean House Price Over Time")
+```
+
+\newpage
+
+## Correlation Matrix
+
+```{r correlation-matrix, echo=FALSE}
+cor_table <- van_summary$correlation_matrix
+colnames(cor_table) <- rownames(cor_table) <- c("Price", "Beds", "Full Bath", "Area Sqft")
+kable(cor_table)
+```
+
+## Median Price by West/East
+
+```{r median-west-east, echo=FALSE}
+west_table <- van_summary$median_price_west_east
+west_table$west <- c("East", "West")
+colnames(west_table) <- c("", "Median Price")
+west_table$`Median Price` <- format(round(west_table$`Median Price`, 0), big.mark = ",")
+kable(west_table)
+```
+
+## Median Price by Number of Bedrooms
+
+```{r median-by-bedrooms, echo=FALSE}
+beds_table <- van_summary$median_price_by_beds
+colnames(beds_table) <- c("Number of Bedrooms", "Median Price")
+beds_table$`Median Price` <- format(round(beds_table$`Median Price`, 0), big.mark = ",")
+kable(beds_table)
+```
+
+## Top 10 Largest Homes by Square Footage
+
+```{r top-10-homes, echo=FALSE}
+homes_table <- van_summary$top10_largest_homes
+colnames(homes_table) <- c("Area Sqft", "Address", "Price", "Beds")
+homes_table$`Area Sqft` <- format(round(homes_table$`Area Sqft`, 0), big.mark = ",")
+homes_table$Price <- format(round(homes_table$Price, 0), big.mark = ",")
+kable(homes_table)
+```
+
+\newpage
+
+## Summary of Information
+
+```{r filtered-homes, echo=FALSE}
+filtered_homes <- vanhousing %>%
+  filter(Beds >= 6, FullBath >= 5, west == 1, price < 500000) %>%
+  select(addressshort, Beds, FullBath, price) %>%
+  mutate(price = format(round(price, 0), big.mark = ","))
+
+colnames(filtered_homes) <- c("Address", "Beds", "Full Baths", "Price")
+kable(filtered_homes)
+```
+
+The above table shows the homes that meet the criteria of having at least 6 bedrooms, 5 full baths, located in the West side of Vancouver, and priced under $500,000. This is a rare find in Vancouver's housing market, as most homes with such features are typically priced much higher. This is shown fact that there only two homes meet this criteria; 141 41ST Ave, and 163 41ST Ave.
+
+
