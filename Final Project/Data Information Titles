@@ -1,0 +1,50 @@
+Hawaii State broken down by County
+
+S2501 - Occupancy Characteristics
+S2502 - Demographic Characteristics for Occupied Housing Units
+S2503 - Financial Characteristics
+S2504 - Physical Housing Characteristics for Occupied Housing Units
+S2506 - Financial Characteristics for Housing Units With a Mortgage
+S2507 - Financial Characteristics for Housing Units Without a Mortgage
+
+B25001 - Housing Units
+B25002 - Occupancy Status
+B25003 - Tenure
+B25004 - Vacancy Status
+B25005 - Vacant - Current Residence Elsewhere
+B25006 - Race of Householder
+B25007 - Tenure by Age of Householder
+B25008 - Total Population in Housing Units by Tenure
+B25009 - Tenure by Household Size
+B25010 - Average Household Size of Occupied Housing Units by Tenure
+B25011 - Tenure by Household Type (Including Living Alone) and Age of Householder
+B25012 - Tenure by Families and Presence of Own Children
+B25013 - Tenure by Educational Attainment of Householder
+B25014 - Tenure by Occupants per Room
+	B25014A - White Alone Household
+	B25014B - African American Alone Household
+	B25014C - Native American or Native Alaskan Household
+	B25014D - Asian Alone Household
+	B25014E - Native Hawaiian and Other Pacific Islander Alone
+	B25014F - Some Other Race Alone Household
+	B25014G - Two or More Races
+	B25014H - White Alone, not Hispanic or Latino, Household
+	B25014I - Hispanic or Latino Alone Household
+B25015 - Tenure by Age of Householder by Occupants per Room
+B25016 - Tenure by Plumbing Facilities by Occupants per Room
+B25017 - Rooms
+B25020 - Tenure by Rooms 
+B25021 - Median Rooms by Tenure
+B25022 - Aggregate Number of Rooms by Tenure
+B25024 - Units in Structures
+B25026 - Total Population in Occupied Housing Units by Tenure by Year Householder Moved Into Unit
+B25027 - Mortgage Status by Age of Householder
+B25031 - Median Gross Rent by Bedrooms
+B25032 - Tenure by Units in Structure
+B25033 - Total Population in Occupied Housing Units by Tenure by Units in Structure
+B25034 - Year Structure Built 
+B25035 - Median Year Structure Built
+B25036 - Tenure by Year Structure Built
+B25037 - Median Year Structure Built by Tenure
+B25038 - Tenure by Year Householder Moved into Unit
+B25039 - Median Year Householder Moved into Unit by Tenure
