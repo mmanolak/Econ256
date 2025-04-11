@@ -1,0 +1,34 @@
+---
+title: "Final Project - In Process"
+author: "Michael Manolakis"
+date: "April 2025"
+output:
+  pdf_document:
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(sf)
+library(knitr)
+library(leaflet)
+options(scipen=9999)
+
+if (Sys.info()['sysname'] == "Windows") {
+  if (Sys.info()['nodename'] == "DegreeLaptop" || Sys.getenv('USERNAME') == "Degree Laptop") {
+    setwd("C:/Users/Degree Laptop/Desktop/Spring 2025/3 - Econ 256 (Data Vis)/exercise14")}
+  else if (Sys.info()['nodename'] == "Michael" || Sys.getenv('USERNAME') == "Michael") {
+    setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise14")}
+} else if (Sys.info()['sysname'] == "Linux") {
+  setwd("~/Desktop/R Files/Econ256/exercise14")
+} else if (Sys.info()['sysname'] == "Darwin") {
+  setwd("~/Desktop/Spring 2025/3 - Econ 256")}
+
+vanhousing <- read_csv("vanhousing.csv")
+vantracts <- read_sf(dsn="vantracts", layer="vantracts") %>%
+  left_join(
+    vanhousing %>%
+      group_by(tract) %>%
+      summarize(medprice = median(price, na.rm = TRUE)), by = "tract")
+```
