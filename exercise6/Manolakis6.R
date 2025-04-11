@@ -11,7 +11,7 @@ if (Sys.info()['sysname'] == "Windows") {
   else if (Sys.info()['nodename'] == "Michael" || Sys.getenv('USERNAME') == "Michael") { 
     setwd("C:/Users/Michael/Desktop/Spring 2025/3 - Econ 256/R Studio Files/Econ256/exercise6")}
 } else if (Sys.info()['sysname'] == "Linux") {
-  setwd("~/Desktop/R Files/Econ256")
+  setwd("~/Desktop/R Files/Econ256/exercise6")
 } else if (Sys.info()['sysname'] == "Darwin") {
   setwd("~/Desktop/Spring 2025/3 - Econ 256")}
 #Last line above is for macOS
@@ -34,10 +34,17 @@ combo <- inner_join(rlong, latlon, by='county_fips')%>%
 
 #statement of labels, loctaions and purposes, relating to size
 ggplot(data=combo, aes(x=longitude, y=latitude, color=canidate, size=votes/1000))+
+<<<<<<< HEAD
 #adding transparency to make the counties that overlapped more visually appealing
   geom_point(alpha=0.75)+
   theme_void()+
 #republican red and democrat blue
+=======
+  #adding transparency to make the counties that overlapped more visually appealing
+  geom_point(alpha=0.75)+
+  theme_void()+
+  #republican red and democrat blue
+>>>>>>> 2922d84a2ed19cda96377c501e8f2ac57c8470be
   scale_color_manual(values=c('#083A90', '#E81B23'))+
   labs(color='Canidate', size='Votes (in thousands)')+
   theme(text=element_text(size=12))+
