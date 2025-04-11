@@ -2,7 +2,9 @@
 title: "Exercise 14: Moving to Canada"
 author: "Michael Manolakis"
 date: "April 2025"
-output: pdf_document
+output:
+  pdf_document:
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
@@ -151,7 +153,16 @@ bedroom_table$`Area Sqft` <- format(round(bedroom_table$`Area Sqft`, 0), big.mar
 kable(bedroom_table)
 ```
 
-## Regression Analysis
+# Regression Analysis
+
+## Regression Interpretation
+The following regressions estimate the average change in home price associated with adding bedrooms, bathrooms, and living on the west side of Vancouver:
+- **Beds Only**: Each additional bedroom is associated with an average increase of **$215,637.70** in home price, without accounting for other features.
+- **Full Baths Only**: Each additional full bathroom increases average home price by approximately **$310,628.30**, independent of other characteristics.
+- **Combined Model**: When controlling for both bedrooms, bathrooms, and location:
+  - An additional bedroom adds **$203,986.40** to home price on average.
+  - An additional full bathroom adds **$114,141.30**.
+  - Living on the **west side** of Vancouver increases home price by approximately **$594,856.80**, holding other features constant, all else held equal.
 
 ### Price vs. Number of Bedrooms
 ```{r regression-beds, echo=FALSE}
@@ -167,16 +178,6 @@ kable(as.data.frame(van_summary$regression_baths$coefficients), digits = 3)
 ```{r regression-full, echo=FALSE}
 kable(as.data.frame(van_summary$regression_full$coefficients), digits = 3)
 ```
-
-### Regression Interpretation
-
-The following regressions estimate the average change in home price associated with adding bedrooms, bathrooms, and living on the west side of Vancouver:
-- **Beds Only**: Each additional bedroom is associated with an average increase of **$215,637.70** in home price, without accounting for other features.
-- **Full Baths Only**: Each additional full bathroom increases average home price by approximately **$310,628.30**, independent of other characteristics.
-- **Combined Model**: When controlling for both bedrooms, bathrooms, and location:
-  - An additional bedroom adds **$203,986.40** to home price on average.
-  - An additional full bathroom adds **$114,141.30**.
-  - Living on the **west side** of Vancouver increases home price by approximately **$594,856.80**, holding other features constant.80, all else held equal.
 
 
 \newpage

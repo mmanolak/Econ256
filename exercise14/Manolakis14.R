@@ -30,22 +30,22 @@ read_sf(dsn="vantracts", layer="vantracts") %>%
 
 #Histogram of house prices
 ggplot(data = vanhousing, aes(x = price)) +
-  geom_histogram(bins = 50, fill = "steelblue", color = "white") +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white")+
   scale_x_continuous(breaks = seq(0, 5000000, by = 1000000),
-                     labels = c("0", "$1 Mil", "$2 Mil", "$3 Mil", "$4 Mil", "$5 Mil")) +
-  ggtitle("Distribution of House Prices in Vancouver") +
-  xlab("Price") +
+                     labels = c("0", "$1 Mil", "$2 Mil", "$3 Mil", "$4 Mil", "$5 Mil"))+
+  ggtitle("Distribution of House Prices in Vancouver")+
+  xlab("Price")+
   ylab("Count")
 
 #Average price by year and time series plot
 vanhousing %>%
   group_by(year_of_sale) %>%
   summarise(mean_price = mean(price, na.rm = TRUE)) %>%
-  ggplot(aes(x = year_of_sale, y = mean_price)) +
-  geom_line(color = "darkred", linewidth = 1) +
+  ggplot(aes(x = year_of_sale, y = mean_price))+
+  geom_line(color = "darkred", linewidth = 1)+
   scale_x_continuous(breaks = seq(2005, 2015, by = 2)) +
   scale_y_continuous(breaks = seq(600000, 1200000, by = 200000),
-                     labels = c("$600K", "$800K", "$1 Mil", "$1.2 Mil")) +
+                     labels = c("$600K", "$800K", "$1 Mil", "$1.2 Mil"))+
   xlab("Year of Sale") +
   ylab("Mean Price") +
   ggtitle("Change in Mean House Price Over Time")
