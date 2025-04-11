@@ -152,7 +152,7 @@ bedroom_table$Price <- format(round(bedroom_table$Price, 0), big.mark = ",")
 bedroom_table$`Area Sqft` <- format(round(bedroom_table$`Area Sqft`, 0), big.mark = ",")
 kable(bedroom_table)
 ```
-
+\newpage
 # Regression Analysis
 
 ## Regression Interpretation
