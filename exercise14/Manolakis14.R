@@ -5,6 +5,8 @@
 #Load necessary library
 library(tidyverse)
 library(sf)
+library(knitr)
+library(leaflet)
 options(scipen=9999)
 
 if (Sys.info()['sysname'] == "Windows") {
@@ -86,3 +88,8 @@ van_summary <- list(
   regression_full = summary(lm(price ~ Beds + FullBath + west, data = vanhousing))
 )
 
+ggplot(data = vantracts) +
+  geom_sf(aes(fill = medprice), color = "white", size = 0.1) +
+  scale_fill_viridis_c(label = scales::dollar, option = "C", name = "Median Price") +
+  labs(title = "Median Home Price by Census Tract in Vancouver") +
+  theme_minimal()
